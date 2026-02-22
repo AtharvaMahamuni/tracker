@@ -22,6 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TODO"
+rootProject.name = "Tracker"
 include(":app")
- 

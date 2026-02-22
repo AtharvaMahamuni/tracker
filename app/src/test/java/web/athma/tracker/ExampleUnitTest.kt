@@ -1,4 +1,4 @@
-package web.athma.todo
+package web.athma.tracker
 
 import org.junit.Test
 

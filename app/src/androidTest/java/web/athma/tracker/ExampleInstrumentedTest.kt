@@ -1,4 +1,4 @@
-package web.athma.todo
+package web.athma.tracker
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("web.athma.todo", appContext.packageName)
+        assertEquals("web.athma.tracker", appContext.packageName)
     }
 }

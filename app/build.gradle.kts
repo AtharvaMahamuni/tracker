@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "web.athma.todo"
+    namespace = "web.athma.tracker"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "web.athma.todo"
+        applicationId = "web.athma.tracker"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

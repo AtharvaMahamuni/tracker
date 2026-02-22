@@ -1,4 +1,4 @@
-package web.athma.todo.data
+package web.athma.tracker.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

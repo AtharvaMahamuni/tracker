@@ -1,4 +1,4 @@
-package web.athma.todo
+package web.athma.tracker
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -28,11 +28,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import web.athma.todo.data.TodoDatabase
-import web.athma.todo.data.TodoRepository
-import web.athma.todo.ui.TodoScreen
-import web.athma.todo.ui.TodoViewModelFactory
-import web.athma.todo.ui.theme.TODOTheme
+import web.athma.tracker.data.TodoDatabase
+import web.athma.tracker.data.TodoRepository
+import web.athma.tracker.ui.TodoScreen
+import web.athma.tracker.ui.TodoViewModelFactory
+import web.athma.tracker.ui.theme.TrackerTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
 
         enableEdgeToEdge()
         setContent {
-            TODOTheme {
+            TrackerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     TodoScreen(
                         modifier = Modifier.padding(innerPadding),

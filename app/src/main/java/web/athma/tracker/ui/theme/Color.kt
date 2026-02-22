@@ -1,4 +1,4 @@
-package web.athma.todo.ui.theme
+package web.athma.tracker.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package web.athma.todo.data
+package web.athma.tracker.data
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -17,4 +17,7 @@ interface TodoDao {
 
     @Update
     suspend fun update(todo: Todo)
+
+    @Query("DELETE FROM todo")
+    suspend fun deleteAll()
 }

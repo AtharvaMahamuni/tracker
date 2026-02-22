@@ -1,4 +1,4 @@
-package web.athma.todo.ui
+package web.athma.tracker.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AddCircle
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -29,6 +30,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.flow.count
+import kotlin.collections.emptyList
+import kotlin.collections.reversed
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,12 +42,15 @@ fun TodoScreen(modifier: Modifier = Modifier, todoViewModelFactory: TodoViewMode
     val todoTextState = viewModel.todoTextState
     val todos = todosState.value.reversed()
 
+    val showDialog = remember { mutableStateOf(false) }
+
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Todo App") },
+                title = { Text("Tracker App") },
                 actions = {
                     TextButton(onClick = {
+                        showDialog.value = true
                     }) {
                         Text("Clear All")
                     }
@@ -106,6 +112,40 @@ fun TodoScreen(modifier: Modifier = Modifier, todoViewModelFactory: TodoViewMode
                     )
                 }
             }
+        }
+
+        // Add this dialog:
+        if (showDialog.value) {
+            AlertDialog(
+                onDismissRequest = {
+                    showDialog.value = false  // ← Close dialog when clicking outside
+                },
+                title = {
+                    Text(text = "Clear All Todos?")
+                },
+                text = {
+                    Text(text = "This will permanently delete all todos. This action cannot be undone.")
+                },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            viewModel.clearAll()      // ← Actually delete
+                            showDialog.value = false  // ← Close dialog
+                        }
+                    ) {
+                        Text("Confirm")
+                    }
+                },
+                dismissButton = {
+                    TextButton(
+                        onClick = {
+                            showDialog.value = false  // ← Just close, don't delete
+                        }
+                    ) {
+                        Text("Cancel")
+                    }
+                }
+            )
         }
     }
 }
