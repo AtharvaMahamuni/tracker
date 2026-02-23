@@ -2,7 +2,6 @@ package web.athma.tracker.data
 
 import android.content.Context
 import androidx.room.Database
-import androidx.room.InvalidationTracker
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
