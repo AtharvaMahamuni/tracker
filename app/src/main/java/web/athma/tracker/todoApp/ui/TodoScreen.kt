@@ -1,4 +1,4 @@
-package web.athma.tracker.ui
+package web.athma.tracker.todoApp.ui
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight

@@ -1,4 +1,4 @@
-package web.athma.tracker.data
+package web.athma.tracker.todoApp.data
 
 import androidx.room.Dao
 import androidx.room.Insert

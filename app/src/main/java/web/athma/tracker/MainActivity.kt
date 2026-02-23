@@ -8,10 +8,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import web.athma.tracker.data.TodoDatabase
-import web.athma.tracker.data.TodoRepository
-import web.athma.tracker.ui.TodoScreen
-import web.athma.tracker.ui.TodoViewModelFactory
+import web.athma.tracker.todoApp.data.TodoDatabase
+import web.athma.tracker.todoApp.data.TodoRepository
+import web.athma.tracker.todoApp.ui.TodoScreen
+import web.athma.tracker.todoApp.ui.TodoViewModelFactory
 import web.athma.tracker.ui.theme.TrackerTheme
 
 class MainActivity : ComponentActivity() {

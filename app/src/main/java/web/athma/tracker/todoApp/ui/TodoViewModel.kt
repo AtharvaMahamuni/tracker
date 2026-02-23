@@ -1,4 +1,4 @@
-package web.athma.tracker.ui
+package web.athma.tracker.todoApp.ui
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
-import web.athma.tracker.data.Todo
-import web.athma.tracker.data.TodoRepository
+import web.athma.tracker.todoApp.data.Todo
+import web.athma.tracker.todoApp.data.TodoRepository
 
 class TodoViewModel(
     private val repository: TodoRepository
