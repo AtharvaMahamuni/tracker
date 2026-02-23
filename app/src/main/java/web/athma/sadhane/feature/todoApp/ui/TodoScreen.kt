@@ -1,4 +1,4 @@
-package web.athma.tracker.feature.todoApp.ui
+package web.athma.sadhane.feature.todoApp.ui
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -27,10 +27,26 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import web.athma.tracker.core.ui.components.CoreViewModel
+import web.athma.sadhane.core.ui.components.CoreViewModel
 import kotlin.collections.emptyList
 import kotlin.collections.reversed
 
+/**
+ * The main screen for the Todo feature.
+ *
+ * Displays a list of todo items with checkboxes and delete buttons, a top bar with a
+ * "Clear All" action, and a bottom bar with a text field and add button for creating new tasks.
+ *
+ * Todo items are shown in reverse insertion order (newest at the top).
+ * Completed items are rendered with strikethrough text and a gray color.
+ *
+ * Destructive actions (delete, clear all) route through [CoreViewModel.showConfirmation]
+ * so they display a shared confirmation dialog before executing.
+ *
+ * @param modifier Modifier applied to the root [Scaffold].
+ * @param todoViewModelFactory Factory used to create [TodoViewModel] with its repository.
+ * @param coreViewModel Shared ViewModel for triggering app-wide confirmation dialogs.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodoScreen(
@@ -47,7 +63,7 @@ fun TodoScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Tracker App") },
+                title = { Text("Sadhane") },
                 actions = {
                     TextButton(onClick = {
                         if (todos.isNotEmpty()) {
@@ -68,7 +84,7 @@ fun TodoScreen(
         bottomBar = {
             Row(
                 modifier = Modifier.padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically  // Add this
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 TextField(
                     modifier = Modifier
@@ -76,7 +92,7 @@ fun TodoScreen(
                     value = todoTextState.value,
                     onValueChange = { viewModel.updateText(it) },
                 )
-                IconButton (
+                IconButton(
                     onClick = {
                         if (todoTextState.value.isNotEmpty()) {
                             viewModel.addTodo()
@@ -93,7 +109,7 @@ fun TodoScreen(
         },
         modifier = modifier
     ) { paddingValues ->
-        LazyColumn (
+        LazyColumn(
             modifier = Modifier
                 .fillMaxHeight()
                 .padding(paddingValues),
@@ -116,6 +132,7 @@ fun TodoScreen(
                         modifier = Modifier.weight(1f),
                         text = todo.task,
                         overflow = TextOverflow.Ellipsis,
+                        // Strikethrough and gray color indicate a completed task
                         textDecoration = if (todo.isDone) TextDecoration.LineThrough else null,
                         color = if (todo.isDone) Color.Gray else Color.Unspecified
                     )

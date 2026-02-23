@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Tracker"
+rootProject.name = "Sadhane"
 include(":app")

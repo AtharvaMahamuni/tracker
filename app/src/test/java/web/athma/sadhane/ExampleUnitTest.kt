@@ -1,4 +1,4 @@
-package web.athma.tracker
+package web.athma.sadhane
 
 import org.junit.Test
 
