@@ -1,4 +1,4 @@
-package web.athma.tracker.todoApp.data
+package web.athma.tracker.feature.todoApp.data
 
 import kotlinx.coroutines.flow.Flow
 
@@ -23,5 +23,9 @@ class TodoRepository(private val todoDao: TodoDao) {
 
     suspend fun deleteAll() {
         todoDao.deleteAll()
+    }
+
+    suspend fun delete(todo: Todo) {
+        todoDao.delete(todo)
     }
 }

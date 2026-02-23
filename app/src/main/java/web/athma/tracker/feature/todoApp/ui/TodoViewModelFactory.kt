@@ -1,8 +1,8 @@
-package web.athma.tracker.todoApp.ui
+package web.athma.tracker.feature.todoApp.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import web.athma.tracker.todoApp.data.TodoRepository
+import web.athma.tracker.feature.todoApp.data.TodoRepository
 
 class TodoViewModelFactory(
     private val repository: TodoRepository

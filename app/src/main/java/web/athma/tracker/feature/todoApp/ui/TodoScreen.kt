@@ -1,4 +1,4 @@
-package web.athma.tracker.todoApp.ui
+package web.athma.tracker.feature.todoApp.ui
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.outlined.AddCircle
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -20,27 +20,29 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import web.athma.tracker.core.ui.components.CoreViewModel
 import kotlin.collections.emptyList
 import kotlin.collections.reversed
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TodoScreen(modifier: Modifier = Modifier, todoViewModelFactory: TodoViewModelFactory) {
+fun TodoScreen(
+    modifier: Modifier = Modifier,
+    todoViewModelFactory: TodoViewModelFactory,
+    coreViewModel: CoreViewModel
+) {
     val viewModel: TodoViewModel = viewModel(factory = todoViewModelFactory)
     val todosState = viewModel.todos.collectAsState(initial = emptyList())
 
     val todoTextState = viewModel.todoTextState
     val todos = todosState.value.reversed()
-
-    val showDialog = remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -48,7 +50,15 @@ fun TodoScreen(modifier: Modifier = Modifier, todoViewModelFactory: TodoViewMode
                 title = { Text("Tracker App") },
                 actions = {
                     TextButton(onClick = {
-                        showDialog.value = true
+                        if (todos.isNotEmpty()) {
+                            coreViewModel.showConfirmation(
+                                title = "Delete all Tasks?",
+                                message = "Do you really want to delete all tasks? Once done can't be undone!",
+                                onConfirm = {
+                                    viewModel.clearAll()
+                                }
+                            )
+                        }
                     }) {
                         Text("Clear All")
                     }
@@ -83,7 +93,6 @@ fun TodoScreen(modifier: Modifier = Modifier, todoViewModelFactory: TodoViewMode
         },
         modifier = modifier
     ) { paddingValues ->
-
         LazyColumn (
             modifier = Modifier
                 .fillMaxHeight()
@@ -104,46 +113,29 @@ fun TodoScreen(modifier: Modifier = Modifier, todoViewModelFactory: TodoViewMode
                         }
                     )
                     Text(
+                        modifier = Modifier.weight(1f),
                         text = todo.task,
+                        overflow = TextOverflow.Ellipsis,
                         textDecoration = if (todo.isDone) TextDecoration.LineThrough else null,
                         color = if (todo.isDone) Color.Gray else Color.Unspecified
                     )
+                    IconButton(onClick = {
+                        coreViewModel.showConfirmation(
+                            title = "Delete Task",
+                            message = "Do you want to delete this ${todo.task}?",
+                            onConfirm = {
+                                viewModel.delete(todo)
+                            }
+                        )
+                    }) {
+                        Icon(
+                            modifier = Modifier.padding(end = 5.dp),
+                            imageVector = Icons.Filled.Delete,
+                            contentDescription = "Add task"
+                        )
+                    }
                 }
             }
-        }
-
-        // Add this dialog:
-        if (showDialog.value) {
-            AlertDialog(
-                onDismissRequest = {
-                    showDialog.value = false  // ← Close dialog when clicking outside
-                },
-                title = {
-                    Text(text = "Clear All Todos?")
-                },
-                text = {
-                    Text(text = "This will permanently delete all todos. This action cannot be undone.")
-                },
-                confirmButton = {
-                    TextButton(
-                        onClick = {
-                            viewModel.clearAll()      // ← Actually delete
-                            showDialog.value = false  // ← Close dialog
-                        }
-                    ) {
-                        Text("Confirm")
-                    }
-                },
-                dismissButton = {
-                    TextButton(
-                        onClick = {
-                            showDialog.value = false  // ← Just close, don't delete
-                        }
-                    ) {
-                        Text("Cancel")
-                    }
-                }
-            )
         }
     }
 }
