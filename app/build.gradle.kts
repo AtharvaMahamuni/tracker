@@ -11,11 +11,11 @@ jacoco {
 }
 
 android {
-    namespace = "web.athma.sadhane"
+    namespace = "web.athma.toytools"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "web.athma.sadhane"
+        applicationId = "web.athma.toytools"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

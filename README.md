@@ -1,4 +1,4 @@
-# Sadhane
+# Toy Tools
 
 A growing collection of Android utility features, built with Jetpack Compose, Room, and MVVM architecture.
 
@@ -21,12 +21,12 @@ Each utility lives in its own self-contained feature module under `feature/`, sh
 The project follows **MVVM + Repository** pattern with a feature-based package structure.
 
 ```
-app/src/main/java/web/athma/sadhane/
+app/src/main/java/web/athma/toytools/
 ├── MainActivity.kt               # Single Activity — bootstraps deps, hosts all screens
 ├── core/
 │   ├── data/
 │   │   └── database/
-│   │       └── SadhaneDatabase.kt  # Shared Room database (all feature entities registered here)
+│   │       └── ToyToolsDatabase.kt  # Shared Room database (all feature entities registered here)
 │   └── ui/
 │       ├── theme/                  # App-wide Material3 theme, colors, typography
 │       └── components/             # Reusable UI: CoreViewModel, AppAlertDialog, DialogState
@@ -77,7 +77,7 @@ No API keys or external services are required — all data is stored locally on 
 
 1. Create a new package under `feature/yourFeatureName/`.
 2. Add `data/` with your Room entity, DAO, and Repository.
-3. Register the entity in `SadhaneDatabase` and bump the database `version`.
+3. Register the entity in `ToyToolsDatabase` and bump the database `version`.
 4. Add `ui/` with your Screen composable, ViewModel, and ViewModelFactory.
 5. Wire up dependencies in `MainActivity` and add the screen to the content area.
 6. Document public classes and functions with KDoc.
