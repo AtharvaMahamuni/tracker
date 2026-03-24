@@ -1,8 +1,8 @@
-package web.athma.toytools.feature.todoApp.ui
+package web.athma.toytools.toy.todoApp.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import web.athma.toytools.feature.todoApp.data.TodoRepository
+import web.athma.toytools.toy.todoApp.data.TodoRepository
 
 /**
  * Factory for creating [TodoViewModel] instances with a [TodoRepository] dependency.

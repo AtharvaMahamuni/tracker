@@ -4,13 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import web.athma.toytools.feature.todoApp.data.Todo
-import web.athma.toytools.feature.todoApp.data.TodoDao
+import web.athma.toytools.toy.todoApp.data.Todo
+import web.athma.toytools.toy.todoApp.data.TodoDao
 
 /**
  * The central Room database for the Toy Tools app.
  *
- * All feature-specific entities and DAOs are registered here. When adding a new feature
+ * All toy-specific entities and DAOs are registered here. When adding a new toy
  * that needs local persistence, add its entity to the [entities] list and expose its DAO
  * as an abstract function, then increment [version].
  *

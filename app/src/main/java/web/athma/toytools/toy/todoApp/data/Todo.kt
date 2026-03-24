@@ -1,4 +1,4 @@
-package web.athma.toytools.feature.todoApp.data
+package web.athma.toytools.toy.todoApp.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

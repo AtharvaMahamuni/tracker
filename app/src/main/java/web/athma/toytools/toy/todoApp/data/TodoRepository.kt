@@ -1,9 +1,9 @@
-package web.athma.toytools.feature.todoApp.data
+package web.athma.toytools.toy.todoApp.data
 
 import kotlinx.coroutines.flow.Flow
 
 /**
- * Repository for the Todo feature. Acts as the single source of truth for todo data.
+ * Repository for the Todo toy. Acts as the single source of truth for todo data.
  *
  * Abstracts the data source (Room database via [TodoDao]) from the ViewModel layer,
  * so the ViewModel never talks directly to the DAO.

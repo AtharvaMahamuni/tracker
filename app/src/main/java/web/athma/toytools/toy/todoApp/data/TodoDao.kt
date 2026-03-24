@@ -1,4 +1,4 @@
-package web.athma.toytools.feature.todoApp.data
+package web.athma.toytools.toy.todoApp.data
 
 import androidx.room.Dao
 import androidx.room.Delete

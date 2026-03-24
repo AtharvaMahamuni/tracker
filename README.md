@@ -1,36 +1,36 @@
 # Toy Tools
 
-A growing collection of Android utility features, built with Jetpack Compose, Room, and MVVM architecture.
+A growing collection of Android utility toys, built with Jetpack Compose, Room, and MVVM architecture.
 
-Each utility lives in its own self-contained feature module under `feature/`, sharing a common database, theme, and core UI components from `core/`.
+Each toy lives in its own self-contained module under `toy/`, sharing a common database, theme, and core UI components from `core/`.
 
 ---
 
-## Features
+## Toys
 
-| Feature | Description |
-|---------|-------------|
+| Toy | Description |
+|-----|-------------|
 | **Todo** | Create, complete, and delete tasks with persistent local storage |
 
-> More utilities will be added here as the app grows.
+> More toys will be added here as the app grows.
 
 ---
 
 ## Architecture
 
-The project follows **MVVM + Repository** pattern with a feature-based package structure.
+The project follows **MVVM + Repository** pattern with a toy-based package structure.
 
 ```
 app/src/main/java/web/athma/toytools/
-├── MainActivity.kt               # Single Activity — bootstraps deps, hosts all screens
+├── MainActivity.kt               # Single Activity — bootstraps deps, hosts all toy screens
 ├── core/
 │   ├── data/
 │   │   └── database/
-│   │       └── ToyToolsDatabase.kt  # Shared Room database (all feature entities registered here)
+│   │       └── ToyToolsDatabase.kt  # Shared Room database (all toy entities registered here)
 │   └── ui/
 │       ├── theme/                  # App-wide Material3 theme, colors, typography
 │       └── components/             # Reusable UI: CoreViewModel, AppAlertDialog, DialogState
-└── feature/
+└── toy/
     └── todoApp/
         ├── data/                   # Todo entity, DAO, Repository
         └── ui/                     # TodoScreen, TodoViewModel, TodoViewModelFactory
@@ -47,7 +47,7 @@ UI (Composable) → ViewModel → Repository → DAO → Room Database
 - **Room** handles persistence; DAOs return `Flow<T>` for reactive updates.
 - **Repository** is the single source of truth — ViewModels never call DAOs directly.
 - **ViewModel** holds UI state and exposes actions; it survives configuration changes.
-- **CoreViewModel** is Activity-scoped and shared across all features for global UI (e.g. confirmation dialogs).
+- **CoreViewModel** is Activity-scoped and shared across all toys for global UI (e.g. confirmation dialogs).
 
 ---
 
@@ -73,9 +73,9 @@ No API keys or external services are required — all data is stored locally on 
 
 ---
 
-## Adding a New Feature
+## Adding a New Toy
 
-1. Create a new package under `feature/yourFeatureName/`.
+1. Create a new package under `toy/yourToyName/`.
 2. Add `data/` with your Room entity, DAO, and Repository.
 3. Register the entity in `ToyToolsDatabase` and bump the database `version`.
 4. Add `ui/` with your Screen composable, ViewModel, and ViewModelFactory.

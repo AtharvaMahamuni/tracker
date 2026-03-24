@@ -1,4 +1,4 @@
-package web.athma.toytools.feature.todoApp.ui
+package web.athma.toytools.toy.todoApp.ui
 
 import android.content.Context
 import androidx.compose.ui.test.assertIsDisplayed
@@ -22,7 +22,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import web.athma.toytools.core.data.database.ToyToolsDatabase
 import web.athma.toytools.core.ui.components.CoreViewModel
-import web.athma.toytools.feature.todoApp.data.TodoRepository
+import web.athma.toytools.toy.todoApp.data.TodoRepository
 
 /**
  * Integration-style UI tests for [TodoScreen].

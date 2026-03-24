@@ -1,4 +1,4 @@
-package web.athma.toytools.feature.todoApp.ui
+package web.athma.toytools.toy.todoApp.ui
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -32,7 +32,7 @@ import kotlin.collections.emptyList
 import kotlin.collections.reversed
 
 /**
- * The main screen for the Todo feature.
+ * The main screen for the Todo toy.
  *
  * Displays a list of todo items with checkboxes and delete buttons, a top bar with a
  * "Clear All" action, and a bottom bar with a text field and add button for creating new tasks.

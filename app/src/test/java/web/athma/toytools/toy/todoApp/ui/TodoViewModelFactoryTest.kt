@@ -1,4 +1,4 @@
-package web.athma.toytools.feature.todoApp.ui
+package web.athma.toytools.toy.todoApp.ui
 
 import androidx.lifecycle.ViewModel
 import io.mockk.every
@@ -8,7 +8,7 @@ import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import web.athma.toytools.feature.todoApp.data.TodoRepository
+import web.athma.toytools.toy.todoApp.data.TodoRepository
 
 class TodoViewModelFactoryTest {
 

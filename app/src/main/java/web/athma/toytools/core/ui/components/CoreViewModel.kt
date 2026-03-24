@@ -6,10 +6,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
 /**
- * App-wide ViewModel that manages shared UI state across all features.
+ * App-wide ViewModel that manages shared UI state across all toys.
  *
  * Currently handles the global confirmation dialog via [dialogState].
- * Any feature screen that needs to show a destructive-action confirmation should
+ * Any toy screen that needs to show a destructive-action confirmation should
  * call [showConfirmation] rather than managing its own dialog state.
  *
  * This ViewModel is scoped to the Activity and shared between all composable screens.

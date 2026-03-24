@@ -12,9 +12,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import web.athma.toytools.core.data.database.ToyToolsDatabase
 import web.athma.toytools.core.ui.components.AppAlertDialog
 import web.athma.toytools.core.ui.components.CoreViewModel
-import web.athma.toytools.feature.todoApp.data.TodoRepository
-import web.athma.toytools.feature.todoApp.ui.TodoScreen
-import web.athma.toytools.feature.todoApp.ui.TodoViewModelFactory
+import web.athma.toytools.toy.todoApp.data.TodoRepository
+import web.athma.toytools.toy.todoApp.ui.TodoScreen
+import web.athma.toytools.toy.todoApp.ui.TodoViewModelFactory
 import web.athma.toytools.core.ui.theme.ToyToolsTheme
 
 /**
@@ -22,18 +22,18 @@ import web.athma.toytools.core.ui.theme.ToyToolsTheme
  *
  * Responsible for:
  * - Bootstrapping the dependency graph (database → DAO → repository → ViewModel factory)
- * - Providing the [CoreViewModel] shared across all feature screens
+ * - Providing the [CoreViewModel] shared across all toy screens
  * - Rendering the [AppAlertDialog] overlay at the top level so it can appear over any screen
- * - Applying the [ToyToolsTheme] and routing to the appropriate feature screen
+ * - Applying the [ToyToolsTheme] and routing to the appropriate toy screen
  *
- * As new utility features are added, wire their dependencies here and add their screens
+ * As new toys are added, wire their dependencies here and add their screens
  * to the navigation/content area inside [setContent].
  */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Bootstrap the Todo feature dependencies
+        // Bootstrap the Todo toy dependencies
         val database = ToyToolsDatabase.getInstance(applicationContext)
         val dao = database.todoDao()
         val repository = TodoRepository(dao)
@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
 
         enableEdgeToEdge()
         setContent {
-            // CoreViewModel is scoped to the Activity and shared with all feature screens
+            // CoreViewModel is scoped to the Activity and shared with all toy screens
             val coreViewModel: CoreViewModel = viewModel()
 
             // AppAlertDialog sits above all screens to render confirmation dialogs app-wide

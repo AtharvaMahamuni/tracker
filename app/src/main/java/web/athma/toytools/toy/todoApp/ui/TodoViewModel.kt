@@ -1,4 +1,4 @@
-package web.athma.toytools.feature.todoApp.ui
+package web.athma.toytools.toy.todoApp.ui
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
@@ -9,11 +9,11 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import web.athma.toytools.core.ui.components.DialogState
-import web.athma.toytools.feature.todoApp.data.Todo
-import web.athma.toytools.feature.todoApp.data.TodoRepository
+import web.athma.toytools.toy.todoApp.data.Todo
+import web.athma.toytools.toy.todoApp.data.TodoRepository
 
 /**
- * ViewModel for the Todo feature. Holds UI state and exposes actions for [TodoScreen].
+ * ViewModel for the Todo toy. Holds UI state and exposes actions for [TodoScreen].
  *
  * Communicates with [TodoRepository] for all data operations and uses [viewModelScope]
  * to launch coroutines that are automatically cancelled when the ViewModel is cleared.
